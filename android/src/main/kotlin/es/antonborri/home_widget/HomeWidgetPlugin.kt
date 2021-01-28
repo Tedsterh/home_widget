@@ -33,8 +33,8 @@ class HomeWidgetPlugin : FlutterPlugin, MethodCallHandler {
     }
 
     fun registerWith(registrar: io.flutter.plugin.common.PluginRegistry.Registrar) {
-        val homeWidgetPlugin = HomeWidgetPlugin()
-        homeWidgetPlugin.onAttachedToEngine(registrar.context(), registrar.messenger())
+//        val homeWidgetPlugin = HomeWidgetPlugin()
+        onAttachedToEngine(registrar.context(), registrar.messenger())
     }
 
     override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
