@@ -24,6 +24,11 @@ class HomeWidgetPlugin : FlutterPlugin, MethodCallHandler {
         context = flutterPluginBinding.applicationContext
     }
 
+    fun registerWith(registrar: io.flutter.plugin.common.PluginRegistry.Registrar) {
+        val sqflitePlugin = HomeWidgetPlugin()
+        sqflitePlugin.onAttachedToEngine(registrar.context(), registrar.messenger())
+    }
+
     override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
         when (call.method) {
             "saveWidgetData" -> {
