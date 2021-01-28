@@ -8,6 +8,7 @@ import android.content.SharedPreferences
 import androidx.annotation.NonNull
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.plugin.common.MethodCall
+import io.flutter.plugin.common.BinaryMessenger
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
@@ -18,7 +19,7 @@ class HomeWidgetPlugin : FlutterPlugin, MethodCallHandler {
     private lateinit var channel: MethodChannel
     private lateinit var context: Context
 
-    override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) { 
+    override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
         onAttachedToEngine(flutterPluginBinding.getApplicationContext(), flutterPluginBinding.getBinaryMessenger());
 //        channel = MethodChannel(flutterPluginBinding.binaryMessenger, "home_widget")
 //        channel.setMethodCallHandler(this)
@@ -32,8 +33,8 @@ class HomeWidgetPlugin : FlutterPlugin, MethodCallHandler {
     }
 
     fun registerWith(registrar: io.flutter.plugin.common.PluginRegistry.Registrar) {
-        val sqflitePlugin = HomeWidgetPlugin()
-        sqflitePlugin.onAttachedToEngine(registrar.context(), registrar.messenger())
+        val homeWidgetPlugin = HomeWidgetPlugin()
+        homeWidgetPlugin.onAttachedToEngine(registrar.context(), registrar.messenger())
     }
 
     override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
