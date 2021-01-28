@@ -18,10 +18,17 @@ class HomeWidgetPlugin : FlutterPlugin, MethodCallHandler {
     private lateinit var channel: MethodChannel
     private lateinit var context: Context
 
-    override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
-        channel = MethodChannel(flutterPluginBinding.binaryMessenger, "home_widget")
+    override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) { 
+        onAttachedToEngine(flutterPluginBinding.getApplicationContext(), flutterPluginBinding.getBinaryMessenger());
+//        channel = MethodChannel(flutterPluginBinding.binaryMessenger, "home_widget")
+//        channel.setMethodCallHandler(this)
+//        context = flutterPluginBinding.applicationContext
+    }
+
+    private fun onAttachedToEngine(applicationContext: Context, messenger: BinaryMessenger) {
+        context = applicationContext
+        channel = MethodChannel(messenger, "home_widget")
         channel.setMethodCallHandler(this)
-        context = flutterPluginBinding.applicationContext
     }
 
     fun registerWith(registrar: io.flutter.plugin.common.PluginRegistry.Registrar) {
