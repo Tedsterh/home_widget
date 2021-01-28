@@ -14,7 +14,7 @@ import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
 
 
-/** HomeWidgetPlugin */
+/* HomeWidgetPlugin */
 class HomeWidgetPlugin : FlutterPlugin, MethodCallHandler {
     private lateinit var channel: MethodChannel
     private lateinit var context: Context
@@ -27,7 +27,7 @@ class HomeWidgetPlugin : FlutterPlugin, MethodCallHandler {
     }
 
     private fun onAttachedToEngine(applicationContext: Context, messenger: BinaryMessenger) {
-        context = applicationContext
+        this.context = applicationContext
         channel = MethodChannel(messenger, "home_widget")
         channel.setMethodCallHandler(this)
     }
